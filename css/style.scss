@@ -1,0 +1,85 @@
+@charset "utf-8"; *{ margin:0px; padding:0px; text-decoration:none; box-sizing:border-box; font-size:.14rem; font-style:normal; font-weight:normal; font-family:"黑体"; } ul,li{ list-style:none; } html{ -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; font-size:625%; } img,div,body,html,ul,li,a{ -webkit-touch-callout: none; } input,button{ outline:0; } button{ cursor:pointer; } input::-webkit-input-placeholder,textarea::-webkit-input-placeholder { color: #ccc;}
+$num:100%;
+%full{width:$num;height:$num;}
+@mixin nums($h:auto){width:$num;height:$h;}
+@mixin flex($j:space-between){display:flex;justify-content:$j;align-items:center;}
+html,body{@extend %full;}
+%text{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; } 
+%text2{ display:-webkit-box; word-break:break-all; -webkit-line-clamp:2; -webkit-box-orient:vertical; text-overflow:ellipsis; overflow:hidden; }
+.wrap{
+	@extend %full;
+	@include flex();
+	flex-direction:column;
+	overflow:hidden;
+}
+header{
+    @include nums($h:.4rem);
+    @include flex();
+    background: #333;
+    padding:0 .1rem;
+    a{
+        color:#fff;
+    }
+    a:nth-child(2){
+       margin-left:-80px;
+       font-size:16px;
+    }
+}
+main{
+    flex:1;
+    @include nums();
+    background:#666;
+    .box{
+        width:90%;
+        height:80%;
+        margin:10% 5%;
+        background: #fff;
+        border-radius: 5px;
+        p{
+            @include nums($h:.8rem);
+            text-align: center;
+            padding-top: .2rem;
+            img{
+                width:50%;
+                height:auto;
+            }
+        }
+        h1{
+            @include nums($h:.3rem);
+            text-align: center;
+        }
+        ul{
+            @include nums();
+            padding:0 .2rem;
+            li{
+                width:100%;
+                height:70px;
+                line-height: 70px;
+                position: relative;
+                img{
+                    position: absolute;
+                    left:5px;top: 15px;
+                    width:8%;height: auto;
+                }
+                input{
+                    width:100%;
+                    border:0;
+                    background:#fff;
+                    border-bottom: solid 1px #ccc;
+                    padding-left:.4rem;
+                    line-height: 30px;
+                }
+                button{
+                    background: limegreen;
+                    color:#fff;
+                    border-radius: 5px;
+                    text-align: center;
+                    width:100%;
+                    height:30px;
+                    line-height: 30px;
+                    border:0;
+                }
+            }
+        }
+    }
+}
